@@ -1,0 +1,6 @@
+@TaylorTrendsAPI_HostAddress = http://localhost:5124
+
+GET {{TaylorTrendsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
