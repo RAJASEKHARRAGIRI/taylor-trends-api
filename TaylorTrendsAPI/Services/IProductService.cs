@@ -4,7 +4,7 @@ namespace TaylorTrendsAPI.Services
 {
     public interface IProductService
     {
-        Task<IEnumerable<Product>> getAllProducts();
+        Task<IEnumerable<Product>> getAllProducts(ProductFilterRequest productFilterRequest);
         Task<ProductDetail> getProductById(int productId);
         Task<IEnumerable<Category>> getAllCategories();
         Task<int> AddToCart(AddToCart cart);

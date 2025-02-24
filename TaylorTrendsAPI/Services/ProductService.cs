@@ -117,12 +117,19 @@ namespace TaylorTrendsAPI.Services
             }
         }
 
-        public async Task<IEnumerable<Product>> getAllProducts()
+        public async Task<IEnumerable<Product>> getAllProducts(ProductFilterRequest productFilterRequest)
         {
             var products = new List<Product>();
             using (var conn = _databaseConfig.GetConnection())
             {
-                var cmd = new SqlCommand("Select * from Products Order by ID asc", conn);
+                var query = "Select c.Code, p.* from Products p left join Categories c on c.ID = p.Category " +
+                            "Where (@price is null or p.Price > @price) " +
+                                                            "AND ((@category is null or @category = '') or c.Code = @category) " +
+                                                            "AND (@discount is null or p.Discount > @discount) Order by p.ID asc";
+                var cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@price", productFilterRequest.Price);
+                cmd.Parameters.AddWithValue("@category", productFilterRequest.Category ?? null);
+                cmd.Parameters.AddWithValue("@discount", productFilterRequest.Discount);
                 await conn.OpenAsync();
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {

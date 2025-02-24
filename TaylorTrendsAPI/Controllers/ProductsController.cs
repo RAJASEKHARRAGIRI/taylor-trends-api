@@ -17,10 +17,10 @@ namespace TaylorTrendsAPI.Controllers
             _productService = productService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetProducts()
+        [HttpPost]
+        public async Task<IActionResult> GetProducts(ProductFilterRequest productFilterRequest)
         {
-            var products = await _productService.getAllProducts();
+            var products = await _productService.getAllProducts(productFilterRequest);
             return Ok(products);
         }
 
