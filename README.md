@@ -21,6 +21,11 @@ The **Taylor Trends API** is a backend service designed to handle bussiness logi
 * SQL Server (latest version) – Download server and SSMS.
 * Postman (Optional) – Download for API testing.
 
+## Contact
+For any inquiries or suggestions, please reach out to 
+* Github: https://github.com/RAJASEKHARRAGIRI
+* LinkedIn: https://www.linkedin.com/in/rajasekhar-ragiri/
+  
 ## License
 This project is proprietary software and is licensed under the Taylor Trends company. Unauthorized copying, modification, distribution, or use of this project without explicit permission from Taylor Trends is strictly prohibited.
 
